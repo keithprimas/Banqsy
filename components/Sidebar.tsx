@@ -13,7 +13,7 @@ const Sidebar = ({ user }: SidebarProps) => {
     return (
       <section className='sidebar'>
         <nav className='flex flex-col gap-4'>
-          <Link href='/' className='mb-12 cursor-pointer items-center gap-2'>
+          <Link href='/' className='mb-12 flex cursor-pointer items-center gap-2'>
             <Image
               alt='Banqsy'
               src='/icons/app.svg' 
@@ -32,7 +32,18 @@ const Sidebar = ({ user }: SidebarProps) => {
                 className={cn('sidebar-link', {'bg-bank-gradient' : isActive})}
                 href={items.route}
                 key={items.label}>
-                {items.label}
+
+                <div className='relative size-6'>
+                  <Image 
+                  src={items.imgURL}
+                  alt={items.label}
+                  fill
+                  className={cn({ 'brightness-[3] invert-0' : isActive })}
+                  />
+                </div>
+                <p className={cn('sidebar-label', {'!text-white' : isActive})}>
+                  {items.label}
+                </p>
                 </Link>
             )
           })}
