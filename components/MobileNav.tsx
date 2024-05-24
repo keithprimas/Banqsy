@@ -44,23 +44,24 @@ const MobileNav = ({ user } : MobileNavProps) => {
                                 const isActive = pathname === items.route || pathname.startsWith(`${items.route}/`)
 
                                 return (
-                                    <Link 
-                                    className={cn('sidebar-link', {'bg-bank-gradient' : isActive})}
-                                    href={items.route}
-                                    key={items.label}>
+                                    <SheetClose asChild key={items.route}>
+                                        <Link 
+                                        className={cn('mobilenav-sheet_close w-full', {'bg-bank-gradient' : isActive})}
+                                        href={items.route}
+                                        key={items.label}>
 
-                                    <div className='relative size-6'>
-                                    <Image 
-                                    src={items.imgURL}
-                                    alt={items.label}
-                                    fill
-                                    className={cn({ 'brightness-[3] invert-0' : isActive })}
-                                    />
-                                    </div>
-                                    <p className={cn('sidebar-label', {'!text-white' : isActive})}>
-                                    {items.label}
-                                    </p>
-                                    </Link>
+                                        <Image 
+                                        src={items.imgURL}
+                                        alt={items.label}
+                                        width={20}
+                                        height={20}
+                                        className={cn({ 'brightness-[3] invert-0' : isActive })}
+                                        />
+                                        <p className={cn('text-16 font-semibold text-black-2', {'text-white' : isActive})}>
+                                        {items.label}
+                                        </p>
+                                        </Link>
+                                    </SheetClose>
                                 )
                                 })}
                             </nav>
